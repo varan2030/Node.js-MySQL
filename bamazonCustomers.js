@@ -74,14 +74,30 @@ connection.connect(function(err) {
       var balance =  stockQuantity - number;
       if (balance < 0){
         console.log("Insufficient quantity! " +  res[0].product_name + " left only " + res[0].stock_quantity);
+        proceedPurchase();
       }else{
         connection.query("UPDATE products SET stock_quantity = ? WHERE ?", [balance, id], function(err, res) {
           console.log("You total amount is " + number*price);
+          proceedPurchase();
         })
       }
     })
   }
 
-
+function proceedPurchase(){
+  inquirer.prompt([
+    {
+      type: "confirm",
+      name: "name",
+      message: "Do you want to proceed your purshase?"
+    }
+  ]).then(function(answer){
+    if(answer.name){
+      cutomerChoice();
+    }else{
+      connection.end();
+    }
+  })
+}
 
   showProducts();
