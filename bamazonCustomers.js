@@ -76,7 +76,7 @@ connection.connect(function(err) {
         console.log("Insufficient quantity! " +  res[0].product_name + " left only " + res[0].stock_quantity);
         proceedPurchase();
       }else{
-        connection.query("UPDATE products SET stock_quantity = ? WHERE ?", [balance, id], function(err, res) {
+        connection.query("UPDATE products SET stock_quantity = ? WHERE ?", [balance, {item_id: id}], function(err, res) {
           console.log("You total amount is " + number*price);
           proceedPurchase();
         })
@@ -89,7 +89,7 @@ function proceedPurchase(){
     {
       type: "confirm",
       name: "name",
-      message: "Do you want to proceed your purshase?"
+      message: "Do you want to proceed with your purshase?"
     }
   ]).then(function(answer){
     if(answer.name){
