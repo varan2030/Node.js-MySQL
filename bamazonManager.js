@@ -147,8 +147,14 @@ function addNewProduct(){
             name: 'quantity',
         }
     ]).then(function(answer){
-        var query = "INSERT INTO products (product_name, department_name, price, stock_quantity) VALUES ?";
-        connection.query(query, ([answer.productName, answer.department, answer.price, answer.quantity]), function(err, res){
+       
+        connection.query("INSERT INTO products SET ?",
+        {
+          product_name: answer.productName,
+          department_name: answer.department,
+          price: answer.price,
+          stock_quantity: answer.quantity
+        }, function(err, res){
             console.log("Connected!");
             managerChoice();
           })
