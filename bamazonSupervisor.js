@@ -26,7 +26,7 @@ var connection = mysql.createConnection({
     inquirer.prompt([
       {
       type: 'list',
-      message: 'Manager menu options: ',
+      message: 'Supervisor menu options: ',
       name: 'name',
       choices: ["View Sales by Departments", "View Total Sales and Profit", "Exit"]
       }
