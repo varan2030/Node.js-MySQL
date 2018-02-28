@@ -138,13 +138,36 @@ function addNewProduct(){
         },
         {
             type: 'input',
-            message: 'Price: ',
-            name: 'price',
+            message: 'Cost price: ',
+            name: 'costPrice',
+            validate: function (value) {
+                if (isNaN(value) === false && parseInt(value) > 0 ) {
+                  return true;
+                }
+                return false;
+              }
         },
         {
             type: 'input',
-            message: 'Quantity',
+            message: 'Price: ',
+            name: 'price',
+            validate: function (value) {
+                if (isNaN(value) === false && parseInt(value) > 0 ) {
+                  return true;
+                }
+                return false;
+              }
+        },
+        {
+            type: 'input',
+            message: 'Quantity: ',
             name: 'quantity',
+            validate: function (value) {
+                if (isNaN(value) === false && parseInt(value) > 0 ) {
+                  return true;
+                }
+                return false;
+              }
         }
     ]).then(function(answer){
        
@@ -152,10 +175,10 @@ function addNewProduct(){
         {
           product_name: answer.productName,
           department_name: answer.department,
+          cost_price: answer.costPrice,
           price: answer.price,
           stock_quantity: answer.quantity
         }, function(err, res){
-            console.log("Connected!");
             managerChoice();
           })
     })

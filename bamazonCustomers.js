@@ -72,11 +72,12 @@ connection.connect(function(err) {
       var productName = res[0].product_name;
       var price = res[0].price;
       var balance =  stockQuantity - number;
+      var soldItems = res[0].sold_items + number;
       if (balance < 0){
         console.log("Insufficient quantity! " +  res[0].product_name + " left only " + res[0].stock_quantity);
         proceedPurchase();
       }else{
-        connection.query("UPDATE products SET stock_quantity = ? WHERE ?", [balance, {item_id: id}], function(err, res) {
+        connection.query("UPDATE products SET stock_quantity = ?, sold_items = ? WHERE ?", [balance, soldItems, {item_id: id}], function(err, res) {
           console.log("You total amount is " + number*price);
           proceedPurchase();
         })
