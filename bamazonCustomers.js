@@ -72,7 +72,7 @@ connection.connect(function(err) {
       var productName = res[0].product_name;
       var price = res[0].price;
       var balance =  stockQuantity - number;
-      var soldItems = res[0].sold_items + number;
+      var soldItems = res[0].sold_items + parseInt(number);
       if (balance < 0){
         console.log("Insufficient quantity! " +  res[0].product_name + " left only " + res[0].stock_quantity);
         proceedPurchase();

@@ -22,18 +22,18 @@ var connection = mysql.createConnection({
   };
 
   function supervisorReview(){
-    var query = "SELECT COUNT (sold_items), department_name FROM products GROUP BY department_name";
+    var query = "SELECT COUNT(*) AS number_of_products, department_name, SUM(cost_price * sold_items) AS cost, SUM (price * sold_items) AS sale, SUM((price-cost_price)*sold_items) AS profit FROM products GROUP BY department_name";
+    
     connection.query(query, function(err, res) {
         console.log(res);
         var table = new Table({
-            head: ['#', 'Department', 'Sold Items'], 
-            colWidths: [5, 25, 35]
+            head: ['Number of product', 'Department', 'Over head costs', "Product sales", "Profit"], 
+            colWidths: [20, 35, 25, 25, 25]
         });
         for (var i = 0; i < res.length; i++) {
-        table.push([res[i].department_id, res[i].department_name, res[i].sold_items]);
+        table.push([res[i].number_of_products, res[i].department_name, res[i].cost, res[i].sale, res[i].profit]);
         }
         console.log(table.toString());
-        managerChoice();
         });
   };
   connectToDb();
