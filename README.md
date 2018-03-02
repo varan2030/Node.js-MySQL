@@ -53,3 +53,8 @@ Overview the products costs, sales and profit by Departments
 Overview the Total costs, sales and profit of the store
 
 ![Image Total sales and profit](https://github.com/varan2030/Node.js-MySQL/blob/master/images/total_profit_overview.png)
+
+You can find all my projects in My Portfolio: https://varan2030.github.io/Bootstrap-Portfolio/
+
+# Copyright
+(C) Almaz Dolubaev 2018. All Rights Reserved.
