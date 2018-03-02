@@ -6,4 +6,4 @@ The app will take in orders from customers and deplete stock from the store's in
 
 Initializing node bamazonCustomer.js in the command line brings up the storefront. It will ask you what you'd like to purchase by item number and how many:
 
-![Image](https://varan2030.github.com/images/customer_list.png)
+![Image]https://github.com/varan2030/Node.js-MySQL/tree/master/images/customer_list.png)
