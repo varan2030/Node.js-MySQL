@@ -138,7 +138,7 @@ function addNewProduct(){
         },
         {
             type: 'input',
-            message: 'Cost price: ',
+            message: 'Cost: ',
             name: 'costPrice',
             validate: function (value) {
                 if (isNaN(value) === false && parseInt(value) > 0 ) {
